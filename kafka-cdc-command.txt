@@ -1,0 +1,11 @@
+confluent local services stop
+confluent local services connect log
+confluent local services connect connector list
+confluent-hub install confluentinc/kafka-connect-avro-converter:7.2.1
+confluent local services connect stop
+confluent-hub install confluentinc/kafka-connect-jdbc:latest restart
+confluent local services connect log | grep mysql
+cp /mnt/j/demo/mysql-connector-java-8.0.30.jar  .
+kafka-console-consumer --bootstrap-server localhost:9092 --topic employees-transfer-data-v1 --from-beginning
+kafka-practice/confluent-7.2.1/share/java/kafka$ - mysql connector jar should be here
+

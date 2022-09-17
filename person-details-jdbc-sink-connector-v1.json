@@ -1,0 +1,26 @@
+{
+  "name": "person-details-jdbc-sink-connector-v1",
+  "config": {
+    "connector.class": "io.confluent.connect.jdbc.JdbcSinkConnector",
+    "tasks.max": "1",
+    "topics": "employees-transfer-data-v1",
+    "key.converter": "io.confluent.connect.avro.AvroConverter",
+    "value.converter": "io.confluent.connect.avro.AvroConverter",
+    "key.converter.schema.registry.url": "http://localhost:8081",
+    "value.converter.schema.registry.url": "http://localhost:8081",
+    "transforms": "Flatten,RenameFields",
+    "transforms.Flatten.type":"org.apache.kafka.connect.transforms.Flatten$Value",
+    "transforms.Flatten.delimiter":"_",
+    "transforms.RenameFields.type": "org.apache.kafka.connect.transforms.ReplaceField$Value",
+    "transforms.RenameFields.renames": "emp_no:id,birth_date:birth_date,first_name:first_name,last_name:last_name,gender:gender,hire_date:hire_date",
+    "connection.url": "jdbc:mysql://localhost:3306/test",
+    "connection.user": "root",
+    "connection.password": "jewel",
+    "insert.mode": "upsert",
+    "batch.size": "2",
+    "table.name.format": "person",
+    "pk.mode": "record_value",
+    "pk.fields": "id",
+    "db.timezone": "Asia/Dhaka"
+  }
+}
