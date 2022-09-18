@@ -1,3 +1,21 @@
+ confluent local services connect/zookeeper/kafka/kafka-rest et
+  consume     Consume from a Kafka topic.
+  log         Print logs showing Apache Kafka® output.
+  produce     Produce to a Kafka topic.
+  start       Start Apache Kafka®.
+  status      Check if Apache Kafka® is running.
+  stop        Stop Apache Kafka®.
+  top         View resource usage for Apache Kafka®.
+  version     Print the current version of Apache Kafka®.
+
+view topic: kafka-topics --bootstrap-server=localhost:9092 --list
+topic-create: kafka-topics --create --bootstrap-server=localhost:9092 --replication-factor 1 --partitions 1 --topic spring-boot-kafka-topic-v1
+view one topic: kafka-topics --describe --bootstrap-server=localhost:9092 --topic spring-boot-kafka-topic-v1
+create-consumer:  kafka-console-consumer --topic spring-boot-kafka-topic-v1 --bootstrap-server=localhost:9092
+create-producer:  kafka-console-producer --topic spring-boot-kafka-topic-v1 --bootstrap-server=localhost:9092
+
+sudo apt-get install openjdk-8-jdk
+
 confluent local services stop
 confluent local services connect log
 confluent local services connect connector list
@@ -6,6 +24,14 @@ confluent local services connect stop
 confluent-hub install confluentinc/kafka-connect-jdbc:latest restart
 confluent local services connect log | grep mysql
 cp /mnt/j/demo/mysql-connector-java-8.0.30.jar  .
-kafka-console-consumer --bootstrap-server localhost:9092 --topic employees-transfer-data-v1 --from-beginning
+kafka-console-consumer --bootstrap-server localhost:9092 --topic spring-boot-kafka-topic-v1 --from-beginning
 kafka-practice/confluent-7.2.1/share/java/kafka$ - mysql connector jar should be here
+
+
+problem:
+ubunutu not installed:debian installed
+Windows service trun on: hyper-v, virtualization platform
+install mysql-server: access deinied: ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'insert_password';
+edit-kafka = etc/kafka/server.properties
+install: confluent-hub install confluentinc/kafka-connect-jdbc:latest if error close and open
 

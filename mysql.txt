@@ -1,0 +1,14 @@
+CREATE TABLE employees (
+    emp_no      INT             NOT NULL,  
+    version     INT             NOT NULL,
+    birth_date  DATE            NOT NULL,
+    name  VARCHAR(14)     NOT NULL,
+    gender      ENUM ('M','F')  NOT NULL,  
+    hire_date   DATE            NOT NULL,
+    PRIMARY KEY (emp_no)                   
+                                                                              
+);
+
+INSERT INTO employees(emp_no,version,birth_date,name,gender,hire_date,
+
+ ALTER TABLE employees MODIFY COLUMN  hire_date timestamp default current_timestamp();
